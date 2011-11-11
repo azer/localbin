@@ -1,0 +1,3 @@
+echo "Affirmative!"
+mplayer -slave -playlist /home/azer/.config/rp.m3u>/tmp/radio &
+echo "Bye!"

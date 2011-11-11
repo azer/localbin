@@ -1,0 +1,18 @@
+mocstate=$(mocp -i|grep State| sed 's/State: //')
+mocinfo=""
+
+if [ $mocstate = "PLAY" ]
+then
+  mocinfo="MOC: <fc=#888888>$(mocp -i|grep Artist| sed 's/Artist: //') - $(mocp -i|grep SongTitle| sed 's/SongTitle: //')</fc>"
+  echo $mocinfo
+fi
+
+rpinfo=""
+if [ -e "/tmp/radio" ]; then
+  iskilled=$(tail -n 1 /tmp/rp|grep "Exiting")
+  if [ ${#iskilled} -eq 0 ]; then
+    streamtitle=$(tac /tmp/radio|grep StreamTitle -m 1|sed "s/.*StreamTitle\='//"|sed "s/'.*//")
+    rpinfo="RADIO: <fc=#888888>$streamtitle</fc>" 
+    echo $rpinfo
+  fi
+fi

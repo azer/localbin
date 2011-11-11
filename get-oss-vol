@@ -1,0 +1,36 @@
+# OSS volume bar script coded to be used with Xmobar
+# 
+# Usage Example:
+#   > get_oss_vol
+#   VOL: <fc=#005500>||||</fc>
+# 
+# Azer Koculu <azer@kodfabrik.com>                                                                                                      
+# http://azer.kodfabrik.com                                                                                                             
+# 
+# Sun Nov  7 23:05:39 EET 2010
+
+vol=$(ossmix | grep 'outvol' | sed 's/.*(\w* //' | sed 's/\..*//')
+bar=""
+
+color_high="#aa3300"
+color_normal="#662200"
+color_low="#331100"
+
+color=$color_high
+
+if [ $vol -lt 15 ]; then
+  color=$color_normal
+fi
+
+if [ $vol -lt 5 ]; then
+  color=$color_low
+fi
+
+let stripe=$vol/5 
+while [ $stripe -gt 0 ]; do
+  bar="$bar|"
+  let stripe=stripe-1
+done 
+
+echo "VOL: <fc=$color>$bar</fc>"
+
