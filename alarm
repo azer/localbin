@@ -1,0 +1,3 @@
+sleep $1
+#mplayer ~/.local/share/siren1.ogg -loop 0
+mplayer ~/.local/share/alarm.mp3 -loop 0

@@ -1,0 +1,1 @@
+ffmpeg -f oss -i /dev/dsp ~/recs/$(date +"%Y-%m-%d_%H-%M-%S.mp3")

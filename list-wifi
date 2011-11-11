@@ -1,0 +1,4 @@
+ifconfig wlan0 down 
+sleep 0.3
+ifconfig wlan0 up
+iwlist scan|egrep "Cell|Encryption|WPA|WPA2|ESSID"

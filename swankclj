@@ -1,0 +1,1 @@
+lein swank 2> /dev/null
