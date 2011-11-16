@@ -1,1 +1,1 @@
-$BROWSER $@ 2> /dev/null &
+delicious-surf $@ 2> /dev/null &
