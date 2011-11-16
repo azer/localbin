@@ -1,0 +1,1 @@
+feh -Z $(xkcd-last)
