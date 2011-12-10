@@ -1,0 +1,9 @@
+while [ 1 ]; do
+  test=`connection-existence`
+  
+  if [ $test -eq 0 ]; then
+    connect $@
+  fi
+
+  sleep 2000;
+done 
