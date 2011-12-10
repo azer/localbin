@@ -1,3 +1,5 @@
+# Usage: connect-persist wlan0 network password
+
 while [ 1 ]; do
   test=`connection-existence`
   
