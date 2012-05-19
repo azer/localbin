@@ -1,1 +1,2 @@
+cd ~/opt/clj-slime-backend
 lein swank 2> /dev/null

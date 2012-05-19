@@ -37,8 +37,6 @@ if [ ${#encryption} -gt 0 ]; then
 fi
 
 killall dhcpcd
-ifconfig wlan0 down 
-sleep 0.3
-ifconfig wlan0 up
 
+#dhclient $1
 dhcpcd $1

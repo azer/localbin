@@ -1,0 +1,1 @@
+ls /home/azer/.config/wallpaper/images/favs/*.jpg|shuf -n 1| xargs feh --bg-fill
