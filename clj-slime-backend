@@ -1,0 +1,4 @@
+echo "Starting Swank..."
+
+cd ~/opt/clj-slime-backend
+lein swank &> /dev/null &
