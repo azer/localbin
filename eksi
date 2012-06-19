@@ -1,0 +1,7 @@
+url=$(perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "http://www.eksisozluk.com/show.asp?t=$1&p=$2")
+buffer=$(curl -s "http://google.com/gwt/x?u=$url")
+
+to=$(echo $buffer | html2text | grep -n "no kitty!" |cut -f1 -d:)
+to=$(($to-1))
+
+echo $buffer | html2text | head -n $to
