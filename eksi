@@ -1,7 +1,12 @@
 url=$(perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "http://www.eksisozluk.com/show.asp?t=$1&p=$2")
 buffer=$(curl -s "http://google.com/gwt/x?u=$url")
+sum=$(echo $buffer | html2text | wc -l)
 
-to=$(echo $buffer | html2text | grep -n "no kitty!" |cut -f1 -d:)
+to=$(echo $buffer | html2text | grep -n "her zamanki g" |cut -f1 -d:) 
 to=$(($to-1))
 
-echo $buffer | html2text | head -n $to
+from=$(echo $buffer | html2text | head -n 3 | grep -n "Page shown from here." |cut -f1 -d:)
+from_rev=$(($to-$from))
+
+echo $1
+echo $buffer | html2text | head -n $to | tail -n $from_rev
