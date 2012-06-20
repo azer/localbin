@@ -3,6 +3,19 @@ buffer=$(curl -s "http://google.com/gwt/x?u=$url")
 sum=$(echo $buffer | html2text | wc -l)
 
 to=$(echo $buffer | html2text | grep -n "her zamanki g" |cut -f1 -d:) 
+
+if [ ${#to} -eq 0 ]; then
+  to=$(echo $buffer | html2text | grep -n "konulu videolar" |cut -f1 -d:) 
+fi
+
+if [ ${#to} -eq 0 ]; then
+  to=$(echo $buffer | html2text | grep -n "Formatted for mobile viewing by Google" |cut -f1 -d:) 
+fi
+
+if [ ${#to} -eq 0 ]; then
+  to=$sum
+fi
+
 to=$(($to-1))
 
 from=$(echo $buffer | html2text | head -n 3 | grep -n "Page shown from here." |cut -f1 -d:)
