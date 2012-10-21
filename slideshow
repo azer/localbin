@@ -1,2 +1,2 @@
 #feh -d -F -z *
-feh -F *
+feh -F * --magick-timeout -1

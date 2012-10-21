@@ -1,4 +1,5 @@
 url=$(perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "http://www.eksisozluk.com/show.asp?t=$1&p=$2")
+echo $url
 buffer=$(curl -s "http://google.com/gwt/x?u=$url")
 sum=$(echo $buffer | html2text | wc -l)
 

@@ -2,10 +2,9 @@ echo "Affirmative!"
 
 if [ -f /tmp/radio-paradise ]
 then
-  killall mplayer
   rm /tmp/radio-paradise
-else
   killall mplayer
+else
   mplayer -slave -playlist /home/azer/.config/rp.m3u>/tmp/radio-paradise &
 fi
 echo "Bye!"

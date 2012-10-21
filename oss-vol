@@ -12,9 +12,9 @@
 vol=$(ossmix | grep 'outvol' | sed 's/.*(\w* //' | sed 's/\..*//')
 bar=""
 
-color_high="#aa3300"
-color_normal="#662200"
-color_low="#331100"
+color_high="#cc0000"
+color_normal="#880000"
+color_low="#330000"
 
 color=$color_high
 
@@ -28,7 +28,7 @@ fi
 
 let stripe=$vol/5 
 while [ $stripe -gt 0 ]; do
-  bar="$bar|"
+  bar="$bar█"
   let stripe=stripe-1
 done 
 
