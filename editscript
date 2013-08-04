@@ -1,1 +1,1 @@
-vim ~/.local/bin/$1
+vim ~/localbin/$1
