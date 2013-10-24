@@ -1,1 +1,1 @@
-sudo boxcars -port 80 -secure ~/dev/http.json
+boxcars -port 80 -secure ~/dev/http.json
