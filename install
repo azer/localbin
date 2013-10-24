@@ -1,7 +1,0 @@
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
-BASHRC_LINK="source $DIR/config.bash";
-
-if ! grep -Fxq "${BASHRC_LINK}" ~/.bashrc
-then
-  echo "${BASHRC_LINK}" >> ~/.bashrc
-fi
