@@ -1,1 +1,0 @@
-vboxmanage controlvm "$1" reset

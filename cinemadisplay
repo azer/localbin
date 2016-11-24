@@ -1,7 +1,0 @@
-connected=$(xrandr | grep "DP1 connected")
-
-if [ ${#connected} -gt 0 ]; then
-  export CINEMADISPLAY=1
-  xrandr --output LVDS1 --off --output DP1 --auto
-  sleep 1
-fi

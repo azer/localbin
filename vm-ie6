@@ -1,1 +1,0 @@
-VBoxManage guestcontrol $1 execute  --image "cmd.exe" --username Guest --wait-exit -- "/c" "C:\\Program Files\\Internet Explorer\\iexplore.exe" "$2"

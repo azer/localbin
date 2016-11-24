@@ -1,1 +1,0 @@
-VBoxManage guestcontrol $1 execute  --image "cmd.exe" --username Guest -- "/c" "C:\\Program Files\\Utilu IE Collection\\IE${2}00\\iexplore.exe" "$3"

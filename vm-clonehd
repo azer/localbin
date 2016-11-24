@@ -1,1 +1,0 @@
-vboxmanage clonehd $1 $2

@@ -1,1 +1,0 @@
-sudo mount /dev/sd${1}1 /media/$2
