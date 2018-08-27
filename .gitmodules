@@ -7,3 +7,6 @@
 [submodule "spark-git"]
 	path = spark-git
 	url = https://github.com/holman/spark.git
+[submodule "pomo"]
+	path = pomo
+	url = https://github.com/jsspencer/pomo.git
