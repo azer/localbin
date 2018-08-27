@@ -1,0 +1,11 @@
+#!/bin/bash
+intern=eDP-1
+extern=HDMI-1
+
+if xrandr | grep "$extern disconnected"; then
+    export MON="$intern"
+    echo $intern
+else
+    export MON="$extern"
+    echo $extern
+fi
