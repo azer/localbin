@@ -1,0 +1,20 @@
+tmp=/tmp/.gif-frames-`date +%Y-%m-%d.%H:%M:%S`
+file=$1
+fps=$2
+scale=$3
+
+if [[ -z "${scale// }" ]]; then
+  scale=640
+fi
+
+if [[ -z "${fps// }" ]]; then
+  fps=10
+fi
+
+echo "$scale"
+echo "$fps"
+
+mkdir -p $tmp
+
+ffmpeg -i "file:$file" -vf scale=$scale:-1:flags=lanczos,fps=$fps $tmp/ffout%03d.png
+convert -delay 10 -loop 0 -dither None -colors 80 $tmp/ffout*.png -fuzz "10%" -layers OptimizeFrame "${file%.*}.gif"

@@ -24,4 +24,4 @@ function usage {
   exit 1
 }
 
-bump $(git describe --abbrev=0) "$1"
+bump $(git describe --tags --abbrev=0) "$1"
