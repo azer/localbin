@@ -1,0 +1,9 @@
+url=$1
+
+if [[ ${url:0:4} != "http" ]]; then
+    url="http://"$url
+fi
+
+echo $url
+
+chromium --app=$url

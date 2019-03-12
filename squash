@@ -1,0 +1,3 @@
+commit=$1
+line=$(git log --pretty=format:'%h' |  awk "/${commit=}/{ print NR; exit }")
+git rebase -i "HEAD~$line"

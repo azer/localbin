@@ -3,9 +3,9 @@ intern=eDP-1
 extern=HDMI-1
 
 if xrandr | grep "$extern disconnected"; then
-    xrandr --output eDP-1 --mode 2048x1152
+    xrandr --output "$intern" --mode 1920x1200
 else
-    xrandr --output "$intern" --off --output "$extern" --auto
+    xrandr --auto --output "$intern" --off 
 fi
 
-feh --bg-fill /home/azer/wallpaper.jpg
+sh ~/.happy-desktop/bin/set-wallpaper
