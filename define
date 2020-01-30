@@ -1,9 +1,1 @@
-if [ ${#1} -lt 2 ]; then
-  cmd=$1
-  word=$2
-else
-  cmd="d"
-  word=$1
-fi
-
-curl "dict://dict.org/$cmd:$word"
+lynx "https://en.wiktionary.org/wiki/$1" -nopause -nocolor -nonumbers -accept_all_cookies -dump  | sed -n '/Retrieved from/q;p' | sed 's/\[edit\]//' | sed '0,/^English$/d' | sed -n '/Translations/q;p' | less

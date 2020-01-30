@@ -1,9 +1,38 @@
-url=$1
+browser=surfer
+historyFile=~/.url_history
+touch $historyFile
 
-if [[ ${url:0:4} != "http" ]]; then
-    url="http://"$url
-fi
+openUrl() {
+    url=$1
 
-echo $url
+    if [[ -z "${url// }" ]]; then
+        url=$(promptUrl)
 
-chromium --app=$url
+        if [[ -z "${url// }" ]]; then
+            echo "A URL is required for opening browser window"
+            exit 1
+        fi
+    fi
+
+    if [[ ${url:0:4} != "http" ]]; then
+        url="http://"$url
+    fi
+
+    grep -v -F "$url" $historyFile > $historyFile.tmp
+    mv "$historyFile.tmp" $historyFile
+    echo $url >> $historyFile
+
+    $browser $url
+}
+
+promptUrl() {
+    history=$(readHistory)
+    ~/.happy-desktop/bin/prompt -o $history -q "Open a website:"
+}
+
+readHistory() {
+    result=$(cat $historyFile | sed 's/https\?:\/\///'  | sed 's/www\.//' | uniq | awk 'NF' | tac | tr '\n' ',')
+    echo $result
+}
+
+openUrl $1

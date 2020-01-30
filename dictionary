@@ -1,0 +1,33 @@
+historyFile=~/.dictionary_history
+touch $historyFile
+
+openWord() {
+    word=$1
+
+    if [[ -z "${word// }" ]]; then
+        word=$(promptWord)
+
+        if [[ -z "${word// }" ]]; then
+            echo "A word is required for opening browser window"
+            exit 1
+        fi
+    fi
+
+    grep -v -F "$word" $historyFile > $historyFile.tmp
+    mv "$historyFile.tmp" $historyFile
+    echo $word >> $historyFile
+
+    alacritty --class "floating" -e /home/azer/localbin/define "$word"
+}
+
+promptWord() {
+    history=$(readHistory)
+    ~/.happy-desktop/bin/prompt -o $history -q "Dictionary:"
+}
+
+readHistory() {
+    result=$(cat $historyFile | uniq | awk 'NF' | tac | tr '\n' ',')
+    echo $result
+}
+
+openWord $1

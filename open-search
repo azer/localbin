@@ -1,0 +1,33 @@
+browser=surfer
+historyFile=~/.search_history
+touch $historyFile
+
+openSearch() {
+    query=$1
+
+    if [[ -z "${query// }" ]]; then
+        query=$(promptQuery)
+
+        if [[ -z "${query// }" ]]; then
+            echo "A query is required for opening search window"
+            exit 1
+        fi
+    fi
+
+    grep -v -F "$query" $historyFile > $historyFile.tmp
+    mv "$historyFile.tmp" $historyFile
+    echo $query >> $historyFile
+    $browser "https://google.com/search?q=$query"
+}
+
+promptQuery() {
+    history=$(readHistory)
+    ~/.happy-desktop/bin/prompt -o "$history" -q "Search:"
+}
+
+readHistory() {
+    result=$(cat $historyFile | uniq | awk 'NF' | tac | tr '\n' ',')
+    echo $result
+}
+
+openSearch $1
